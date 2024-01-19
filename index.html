@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="scissor.css">
+</head>
+
+<body>
+    <h1>scissor paper rock </h1>
+
+    <!-- scissor -->
+    <img src="images/scissor.png" alt="scissor" class="btn" onclick="
+    let computerChoice= compChoiceGenerate() ;
+    let winner = result('scissor', computerChoice);
+    showResult('scissor', computerChoice, winner);
+    ">
+
+
+    <!-- paper -->
+    <img src="images/paper.png" alt="paper" class=" btn" onclick="  
+    computerChoice= compChoiceGenerate() ;
+    winner = result('paper', computerChoice);
+    showResult('paper', computerChoice, winner);
+    ">
+
+
+    <!-- rock -->
+    <img src="images/rock.png" alt="rock" class=" btn" onclick=" 
+     computerChoice=compChoiceGenerate() ; 
+     winner = result('rock', computerChoice);
+     showResult('rock', computerChoice, winner);
+    ">
+
+    <div id="scoreFinal">
+
+    </div>
+
+
+
+    <script>
+
+        let score = {
+            win: 0,
+            lose: 0,
+            tie: 0,
+            displayScore: function () {
+                return `  Won:${score.win}  Lost:${score.lose}  Tie:${score.tie}`
+            }
+        };
+
+        function compChoiceGenerate() {
+            let random = Math.random() * 3;
+            if (random > 0 && random <= 1) {
+                return 'scissor';
+            }
+            else if (random > 1 && random <= 2) {
+                return 'paper';
+            }
+            else {
+                return 'rock';
+            }
+        }
+
+        function result(userMove, computerMove) {
+            if (userMove === computerMove) {
+                score.tie++;
+                return 'It is  tie';
+            }
+            else if (computerMove === 'scissor' && userMove === 'paper') {
+                score.lose++;
+                return 'Computer win'
+            }
+            else if (computerMove === 'scissor' && userMove === 'rock') {
+                score.win++;
+                return 'user win'
+            }
+            else if (computerMove === 'paper' && userMove === 'scissor') {
+                score.win++;
+                return 'user win'
+            }
+            else if (computerMove === 'paper' && userMove === 'rock') {
+                score.lose++;
+                return 'Computer win'
+            }
+            else if (computerMove === 'rock' && userMove === 'scissor') {
+                score.lose++;
+                return 'Computer win'
+            }
+            else if (computerMove === 'rock' && userMove === 'paper') {
+                score.win++;
+                return 'User win'
+            }
+        }
+
+        function showResult(userMove, computerMove, winner) {
+            document.getElementById("scoreFinal").innerHTML =
+                ` <pre id ="finalResult">
+ You have chosen ${userMove}. 
+ Computer has chosen ${computerMove}. 
+ ${winner}
+ ${score.displayScore()}
+                    </pre>
+                    `
+
+
+        }
+
+    </script>
+</body>
+
+</html>

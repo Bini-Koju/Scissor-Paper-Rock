@@ -1,0 +1,58 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    text-transform: capitalize;
+    color: rgb(153, 62, 153);
+    text-decoration: underline;
+}
+
+.btn {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+#finalResult {
+    color: blue;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 150%;
+    height: fit-content;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 30px;
+    border: 2px solid rgb(163, 43, 43);
+
+}
+
+/* responsive */
+@media only screen and (max-width:600px) {
+    img {
+
+        width: 30vw;
+        margin-right: 2vw;
+    }
+
+    #finalResult {
+
+        font-size: 120%;
+        border-radius: 10px;
+        border: 1px solid rgb(163, 43, 43);
+
+    }
+
+}
+
+@media only screen and (max-width:290px) {
+
+
+    #finalResult {
+
+        font-size: 100%;
+        border: none;
+
+
+    }
+
+}
